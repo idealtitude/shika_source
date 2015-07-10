@@ -1,0 +1,6 @@
+__pycache__
+*.blend1
+*/*.blend1
+bgui/__pycache__
+bgui/text/__pycache__
+saveload/__pycache__
