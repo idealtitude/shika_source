@@ -73,9 +73,10 @@ class MenuMain(bgui.bge_utils.Layout):
         #deux paramètres: l'identifiant bdd du profil (iduser), et les datas à mettre à jour dans la
         #bdd pour ce profil; le prototype de la méthode est update_user(iduser, datatoupdate)
         
+        #Décommenter les deux lignes ci-dessous pour faire un test d'update
         dicodatamaj = {"argent": 500, "courses": "1 1 0 0", "achievements": "6 3 1 0"}
-        updateuser = saveload.UsersMng()
-        update = updateuser.update_user(bge.logic.globalDict['user_profil']['iduser'], dicodatamaj)
+        #updateuser = saveload.UsersMng()
+        #update = updateuser.update_user(bge.logic.globalDict['user_profil']['iduser'], dicodatamaj)
         
         blendfile = bpy.path.abspath("//") + os.sep + 'main_menu.blend'
         bge.logic.startGame(blendfile)
