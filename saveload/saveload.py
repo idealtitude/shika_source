@@ -39,7 +39,7 @@ class UsersMng:
         """
         Lecture bdd
         ============
-        
+
         :param iduser: type int, identifiant bdd de la ligne à lire dans la table, si iduser = 0: lecture de toute la table
 
         :return: tabledatas list, tableau python contenant les données retournées par la requête
@@ -67,18 +67,34 @@ class UsersMng:
         """
         Ajout dans la bdd
         =================
-        
+
         :param datatostore: dictionnaire contenant toutes les données à enregistrer dans la bdd (ex.: {'nom': 'albator', 'monnaie': 20} )
 
         :return: writeresult, booléen, true si succès, false si échec de la requête
         """
-        pass
+
+        query_values = '"%s", %s, "%s", "%s", CURRENT_TIMESTAMP, "%s"' % (datatostore['name'], datatostore['argent'], datatostore['courses'], datatostore['achievements'], datatostore['key'])
+
+        query = 'insert into users (name, argent, courses, achievements, date, key) values (%s)' % query_values
+
+        self.con = self._dbcon()
+        cur = self.con.cursor()
+        cur.execute(query)
+        self.con.commit()
+        
+        q = 'SELECT last_insert_rowid()'
+        cur.execute(q)
+        iduser = cur.fetchone()[0]
+
+        self.db_close()
+
+        return iduser
 
     def update_user(self, iduser, datatoupdate):
         """
         Mise à jour bdd
         ===============
-        
+
         :param iduser: type int, identifiant bdd, ne peut-être vide
 
         :param datatoupdate: dictionnaire contenant les données à mettre à jour dans la table

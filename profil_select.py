@@ -18,7 +18,7 @@ from saveload import saveload #Import du module saveload
 getusers = saveload.UsersMng() #Instanciation de la classe UsersMng
 bge.logic.globalDict['users'] = getusers.read_table(0) #On récupère toutes les entrées de la table users et on colle le tout dans le gloabldict `users`
 
-MENUCLICK = bpy.path.abspath("//") + 'audio' + os.sep + 'menu_click.mp3'
+MENU_CLICK = bpy.path.abspath("//") + 'audio' + os.sep + 'menu_click.mp3'
 
 
 class MenuMain(bgui.bge_utils.Layout):
@@ -34,7 +34,7 @@ class MenuMain(bgui.bge_utils.Layout):
         lblist = []
 
         #Beep click menu
-        self.soundclick = aud.Factory.file(MENUCLICK)
+        self.soundclick = aud.Factory.file(MENU_CLICK)
         self.device = aud.device()
 
         for item in bge.logic.globalDict['users']:
@@ -67,10 +67,9 @@ class MenuMain(bgui.bge_utils.Layout):
         bge.logic.startGame(blendfile)
 
     def onAdd(self, widget):
-        #blendfile = os.path.abspath(os.path.join(os.path.dirname(sys.argv[0]))) + os.sep + 'add_user.blend'
-        #bge.logic.startGame(blendfile)
+        blendfile = bpy.path.abspath("//") + os.sep + 'add_user.blend'
+        bge.logic.startGame(blendfile)
         self.device.play(self.soundclick)
-        print('Pas encore implémentée...')
 
     def onExit(self, widget):
         #sys.exit() Ferme blender...
