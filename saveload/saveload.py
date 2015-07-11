@@ -72,7 +72,7 @@ class UsersMng:
 
         :return: writeresult, booléen, true si succès, false si échec de la requête
         """
-        
+
         query_values = '"%s", %s, "%s", "%s", CURRENT_TIMESTAMP, "%s"' % (datatostore['name'], datatostore['argent'], datatostore['courses'], datatostore['achievements'], datatostore['key'])
 
         query = 'insert into users (name, argent, courses, achievements, date, key) values (%s)' % query_values
@@ -81,10 +81,21 @@ class UsersMng:
         cur = self.con.cursor()
         cur.execute(query)
         self.con.commit()
-        
+
         q = 'SELECT last_insert_rowid()'
         cur.execute(q)
         iduser = cur.fetchone()[0]
+        
+        #On remplie les tables associées à la table users
+        qaccessoires = 'insert into accessoires (iduser, pistocell, lames, armure, catapulte, mitraillette, belier, decollage, miniturbo, lance_missile, magneto, recup_rapide, double_jeu, visee_rapide) values (%s, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)' % iduser
+
+        qprefs = 'insert into preferences (iduser, controls, filters, audio, default_profil, resolution, difficulte) values (%s, "default_controls", 0, 0, 0, 0, 0)' % iduser
+
+        cur.execute(qaccessoires)
+        self.con.commit()
+
+        cur.execute(qprefs)
+        self.con.commit()
 
         self.db_close()
 
@@ -109,19 +120,19 @@ class UsersMng:
                 if item == "name" or item == "key" or item == "courses" or item == "achievements":
                     newitem = '"' + newitem + '"'
                 query_values += '%s = %s, ' % (item, newitem)
-            
+
         query_values = query_values[0:-2]
-        
+
         query_values = query_values + ' where iduser = ' + str(iduser)
-        
+
         query = 'update users set %s' % query_values
-        
+
         #Update bdd
         self.con = self._dbcon()
         cur = self.con.cursor()
         cur.execute(query)
         self.con.commit()
         self.db_close()
-        
+
         return True
 
