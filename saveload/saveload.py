@@ -101,5 +101,19 @@ class UsersMng:
 
         :return updateresult: booléen, true si succès, false si échec de la requête
         """
-        pass
+        query_values = ''
+        for item in datatoupdate:
+            if item != 'iduser':
+                newitem = datatoupdate[item]
+                if item == "name" or item == "key" or item == "courses" or item == "achievements":
+                    newitem = '"' + newitem + '"'
+                query_values += '%s = %s, ' % (item, newitem)
+            
+        query_values = query_values[0:-2]
+        
+        query_values = query_values + ' where iduser = ' + str(iduser)
+        
+        query = 'update users set %s' % query_values
+        
+        return True
 

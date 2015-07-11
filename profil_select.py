@@ -63,6 +63,20 @@ class MenuMain(bgui.bge_utils.Layout):
         tmp = bge.logic.globalDict['users'][widget.text]
         bge.logic.globalDict['current_profil'] = widget.text
         bge.logic.globalDict['user_profil'] = tmp
+        
+        #Démo màj table users
+        #====================
+        #
+        #On est censé envoyer un dico contenant uniquement les champs devant être mis à jour, exemple:
+        #Pour mettre à jour le champ argent il suffit d'envoyer un dico sous cette forme {"argent": 250}
+        #La méthode (c'est la méthode update_users de la classe UsersMng dans saveload.py) prend en effet
+        #deux paramètres: l'identifiant bdd du profil (iduser), et les datas à mettre à jour dans la
+        #bdd pour ce profil; le prototype de la méthode est update_user(iduser, datatoupdate)
+        
+        dicodatamaj = {"argent": 500, "courses": "1 1 0 0", "achievements": "6 3 1 0"}
+        updateuser = saveload.UsersMng()
+        update = updateuser.update_user(bge.logic.globalDict['user_profil']['iduser'], dicodatamaj)
+        
         blendfile = bpy.path.abspath("//") + os.sep + 'main_menu.blend'
         bge.logic.startGame(blendfile)
 
