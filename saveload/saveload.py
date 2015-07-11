@@ -155,5 +155,9 @@ class UsersDatas(UsersMng):
 
         return rows
 
+    def set_user_datas(self, iduser, table):
+
+        return True
+
 
 

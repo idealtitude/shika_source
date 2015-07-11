@@ -14,14 +14,8 @@ from saveload import saveload #Import du module saveload
 
 #Get datas (autres tables)
 usracc = saveload.UsersDatas()
-
-test = usracc.get_user_datas(bge.logic.globalDict['user_profil']['iduser'], 'accessoires')
-for item in test:
-    print(item['iduser'], ' ', item['pistocell'])
-
-test = usracc.get_user_datas(bge.logic.globalDict['user_profil']['iduser'], 'preferences')
-for item in test:
-    print(item['iduser'], ' ', item['controls'])
+bge.logic.globalDict['accessoires'] = usracc.get_user_datas(bge.logic.globalDict['user_profil']['iduser'], 'accessoires')
+bge.logic.globalDict['preferences'] = usracc.get_user_datas(bge.logic.globalDict['user_profil']['iduser'], 'preferences')
 
 MENUCLICK = bpy.path.abspath("//") + 'audio' + os.sep + 'menu_click.mp3'
 
