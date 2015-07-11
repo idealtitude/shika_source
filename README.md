@@ -2,8 +2,8 @@ SHIKA BGE PROJECT
 =================
 
 
-Branche de travail et de test
------------------------------
+Branche de travail et de test (version sqlite)
+----------------------------------------------
 
 
 **Description du projet**
