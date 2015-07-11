@@ -85,7 +85,7 @@ class UsersMng:
         q = 'SELECT last_insert_rowid()'
         cur.execute(q)
         iduser = cur.fetchone()[0]
-        
+
         #On remplie les tables associées à la table users
         qaccessoires = 'insert into accessoires (iduser, pistocell, lames, armure, catapulte, mitraillette, belier, decollage, miniturbo, lance_missile, magneto, recup_rapide, double_jeu, visee_rapide) values (%s, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)' % iduser
 
@@ -135,4 +135,25 @@ class UsersMng:
         self.db_close()
 
         return True
+
+
+class UsersDatas(UsersMng):
+    def __init__(self):
+        super().__init__()
+
+    def get_user_datas(self, iduser, table):
+        query = 'select * from %s where iduser = %s' % (table, iduser)
+
+        self.con = self._dbcon()
+
+        with self.con:
+            self.con.row_factory = bdd.Row
+
+            cur = self.con.cursor()
+            cur.execute(query)
+            rows = cur.fetchall()
+
+        return rows
+
+
 

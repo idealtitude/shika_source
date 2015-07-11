@@ -18,6 +18,18 @@ from saveload import saveload #Import du module saveload
 getusers = saveload.UsersMng() #Instanciation de la classe UsersMng
 bge.logic.globalDict['users'] = getusers.read_table(0) #On récupère toutes les entrées de la table users et on colle le tout dans le gloabldict `users`
 
+#Get datas (autres tables)
+usracc = saveload.UsersDatas()
+
+test = usracc.get_user_datas(17, 'accessoires')
+for item in test:
+    print(item['iduser'], ' ', item['pistocell'])
+    
+test = usracc.get_user_datas(17, 'preferences')
+for item in test:
+    print(item['iduser'], ' ', item['controls'])
+
+#Fichier audio pour les click menu
 MENU_CLICK = bpy.path.abspath("//") + 'audio' + os.sep + 'menu_click.mp3'
 
 
@@ -63,7 +75,7 @@ class MenuMain(bgui.bge_utils.Layout):
         tmp = bge.logic.globalDict['users'][widget.text]
         bge.logic.globalDict['current_profil'] = widget.text
         bge.logic.globalDict['user_profil'] = tmp
-        
+
         #Démo màj table users
         #====================
         #
@@ -72,12 +84,12 @@ class MenuMain(bgui.bge_utils.Layout):
         #La méthode (c'est la méthode update_users de la classe UsersMng dans saveload.py) prend en effet
         #deux paramètres: l'identifiant bdd du profil (iduser), et les datas à mettre à jour dans la
         #bdd pour ce profil; le prototype de la méthode est update_user(iduser, datatoupdate)
-        
+
         #Décommenter les deux lignes ci-dessous pour faire un test d'update
         dicodatamaj = {"argent": 500, "courses": "1 1 0 0", "achievements": "6 3 1 0"}
         #updateuser = saveload.UsersMng()
         #update = updateuser.update_user(bge.logic.globalDict['user_profil']['iduser'], dicodatamaj)
-        
+
         blendfile = bpy.path.abspath("//") + os.sep + 'main_menu.blend'
         bge.logic.startGame(blendfile)
 
