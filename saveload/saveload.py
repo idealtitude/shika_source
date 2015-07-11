@@ -72,7 +72,7 @@ class UsersMng:
 
         :return: writeresult, booléen, true si succès, false si échec de la requête
         """
-
+        
         query_values = '"%s", %s, "%s", "%s", CURRENT_TIMESTAMP, "%s"' % (datatostore['name'], datatostore['argent'], datatostore['courses'], datatostore['achievements'], datatostore['key'])
 
         query = 'insert into users (name, argent, courses, achievements, date, key) values (%s)' % query_values
@@ -101,6 +101,7 @@ class UsersMng:
 
         :return updateresult: booléen, true si succès, false si échec de la requête
         """
+        #Préparation de la requête
         query_values = ''
         for item in datatoupdate:
             if item != 'iduser':
@@ -114,6 +115,13 @@ class UsersMng:
         query_values = query_values + ' where iduser = ' + str(iduser)
         
         query = 'update users set %s' % query_values
+        
+        #Update bdd
+        self.con = self._dbcon()
+        cur = self.con.cursor()
+        cur.execute(query)
+        self.con.commit()
+        self.db_close()
         
         return True
 
