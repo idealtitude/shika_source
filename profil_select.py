@@ -18,17 +18,6 @@ from saveload import saveload #Import du module saveload
 getusers = saveload.UsersMng() #Instanciation de la classe UsersMng
 bge.logic.globalDict['users'] = getusers.read_table(0) #On récupère toutes les entrées de la table users et on colle le tout dans le gloabldict `users`
 
-#Get datas (autres tables)
-usracc = saveload.UsersDatas()
-
-test = usracc.get_user_datas(17, 'accessoires')
-for item in test:
-    print(item['iduser'], ' ', item['pistocell'])
-    
-test = usracc.get_user_datas(17, 'preferences')
-for item in test:
-    print(item['iduser'], ' ', item['controls'])
-
 #Fichier audio pour les click menu
 MENU_CLICK = bpy.path.abspath("//") + 'audio' + os.sep + 'menu_click.mp3'
 
