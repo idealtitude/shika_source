@@ -29,7 +29,7 @@ class MainMenu(bgui.bge_utils.Layout):
         self.frame.colors = [(0, 0, 0, 0) for i in range(4)]
 
         # A themed frame
-        self.win = bgui.Frame(self, size=[0.6, 0.8], options=bgui.BGUI_DEFAULT|bgui.BGUI_CENTERED)
+        self.win = bgui.Frame(self, size=[0.6, 0.8], pos=[0.01, 0.01], options=bgui.BGUI_DEFAULT)
 
         # Create an image to display
         self.button_play = bgui.Image(self.win, 'images/button_play.png', name="play", size=[.45, .15], pos=[.0, .3], options = bgui.BGUI_DEFAULT|bgui.BGUI_CACHE)
