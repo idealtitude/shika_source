@@ -52,7 +52,8 @@ class MainMenu(bgui.bge_utils.Layout):
     def level_loaded(self, e):
         self.check_loaded = True
         loader = bge.logic.getCurrentScene()
-        #loader.end()
+        loader.end()
+        bge.logic.addScene('MapTest')
         print('Loaded !')
 
 def main(cont):
