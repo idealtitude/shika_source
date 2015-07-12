@@ -83,9 +83,9 @@ class MenuMain(bgui.bge_utils.Layout):
         bge.logic.startGame(blendfile)
 
     def onAdd(self, widget):
+        self.device.play(self.soundclick)
         blendfile = bpy.path.abspath("//") + os.sep + 'add_user.blend'
         bge.logic.startGame(blendfile)
-        self.device.play(self.soundclick)
 
     def onExit(self, widget):
         #sys.exit() Ferme blender...
