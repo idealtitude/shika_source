@@ -16,7 +16,7 @@ import bge
 from saveload import saveload #Import du module saveload
 
 getusers = saveload.UsersMng() #Instanciation de la classe UsersMng
-bge.logic.globalDict['users'] = getusers.read_table(0) #On récupère toutes les entrées de la table users et on colle le tout dans le gloabldict `users`
+bge.logic.globalDict['users'] = getusers.read_table(0) #On récupère toutes les entrées de la table users et on colle le tout dans le gloabldict `users` temporairement, jusqu'à ce que le joueur choisisse un profil ou en crée un nouveau
 
 #Fichier audio pour les click menu
 MENU_CLICK = bpy.path.abspath("//") + 'audio' + os.sep + 'menu_click.mp3'
