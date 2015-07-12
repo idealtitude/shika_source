@@ -12,14 +12,6 @@ import bgui.bge_utils
 import bge
 import bpy
 
-"""
-from saveload import saveload #Import du module saveload
-
-#Get datas (autres tables)
-usracc = saveload.UsersDatas()
-bge.logic.globalDict['accessoires'] = usracc.get_user_datas(bge.logic.globalDict['user_profil']['iduser'], 'accessoires')
-bge.logic.globalDict['preferences'] = usracc.get_user_datas(bge.logic.globalDict['user_profil']['iduser'], 'preferences')
-"""
 
 MENUCLICK = bpy.path.abspath("//") + 'audio' + os.sep + 'menu_click.mp3'
 TRACKS_PATH = bpy.path.abspath("//") + 'tracks' + os.sep
@@ -55,12 +47,12 @@ class MainMenu(bgui.bge_utils.Layout):
         while self.check_loaded == False:
             val = "%.2f" % self.handle.progress
             self.progress.percent = eval(val)
-            print(val)
+            #print(val)
 
     def level_loaded(self, e):
         self.check_loaded = True
         loader = bge.logic.getCurrentScene()
-        loader.end()
+        #loader.end()
         print('Loaded !')
 
 def main(cont):
