@@ -16,7 +16,7 @@ MENUCLICK = bpy.path.abspath("//") + 'audio' + os.sep + 'menu_click.mp3'
 TRACKS_PATH = bpy.path.abspath("//") + 'tracks' + os.sep
 
 
-class MainMenu(bgui.bge_utils.Layout):
+class LoadingScreen(bgui.bge_utils.Layout):
     def __init__(self, sys, data):
         super().__init__(sys, data)
 
@@ -59,7 +59,7 @@ def main(cont):
     if 'sys' not in own:
         # Create our system and show the mouse
         own['sys'] = bgui.bge_utils.System('../../themes/default')
-        own['sys'].load_layout(MainMenu, None)
+        own['sys'].load_layout(LoadingScreen, None)
         mouse.visible = True
 
     else:
