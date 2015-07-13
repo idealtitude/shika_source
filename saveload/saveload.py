@@ -48,7 +48,7 @@ class UsersMng:
         self.con = self._dbcon() #On se connecte à la bdd
         user = ''
         if iduser > 0:
-            user = ' where id = %s' % iduser
+            user = ' where iduser = %s' % iduser
         query = 'select * from users%s' % user
         tabledatas = {}
 
