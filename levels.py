@@ -4,7 +4,6 @@ import aud
 
 import threading
 
-# So we can find the bgui module
 sys.path.append('../..')
 
 import bgui
@@ -21,12 +20,10 @@ class MainMenu(bgui.bge_utils.Layout):
     def __init__(self, sys, data):
         super().__init__(sys, data)
 
-        # Use a frame to store all of our widgets
         self.frame = bgui.Frame(self, border=0)
         self.frame.colors = [(0, 0, 0, 0) for i in range(4)]
 
-        # A themed frame
-        self.win = bgui.Frame(self, size=[0.6, 0.8], pos=[0.01, 0.01], options=bgui.BGUI_DEFAULT)
+       self.win = bgui.Frame(self, size=[0.6, 0.8], pos=[0.01, 0.01], options=bgui.BGUI_DEFAULT)
 
         self.check_loaded = False
 
@@ -35,7 +32,7 @@ class MainMenu(bgui.bge_utils.Layout):
         if 'current_level' in bge.logic.globalDict:
             blendfile = bge.logic.globalDict['current_level']
 
-        self.handle = bge.logic.LibLoad(blendfile, 'Scene', load_actions=False, load_scripts=True, async=True)
+        self.handle = bge.logic.LibLoad(blendfile, 'Scene', load_actions=True, load_scripts=True, async=True)
 
         self.handle.onFinish = self.level_loaded
 
