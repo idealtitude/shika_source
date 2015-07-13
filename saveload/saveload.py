@@ -49,7 +49,7 @@ class UsersMng:
         user = ''
         if iduser > 0:
             user = ' where iduser = %s' % iduser
-        query = 'select * from users%s' % user
+        query = 'select * from users%s' % iduser
         tabledatas = {}
 
         with self.con:
