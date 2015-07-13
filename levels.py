@@ -35,7 +35,8 @@ class MainMenu(bgui.bge_utils.Layout):
         if 'current_level' in bge.logic.globalDict:
             blendfile = bge.logic.globalDict['current_level']
 
-        self.handle = bge.logic.LibLoad(blendfile, 'Scene', async=True)
+        self.handle = bge.logic.LibLoad(blendfile, 'Scene', load_actions=False, load_scripts=True, async=True)
+
         self.handle.onFinish = self.level_loaded
 
         self.progress = bgui.ProgressBar(self.win, percent=0.1, size=[0.92, 0.06], pos=[.2, 0.17], sub_theme="Progress", options=bgui.BGUI_DEFAULT | bgui.BGUI_CENTERX)
@@ -52,8 +53,9 @@ class MainMenu(bgui.bge_utils.Layout):
     def level_loaded(self, e):
         self.check_loaded = True
         loader = bge.logic.getCurrentScene()
-        loader.end()
+        blendfile = TRACKS_PATH + 'map_test_2.blend'
         bge.logic.addScene('MapTest')
+        loader.end()
         print('Loaded !')
 
 def main(cont):
