@@ -42,5 +42,3 @@ class ShikaGame:
 def main():
     launch_game = ShikaGame()
 
-main()
-
