@@ -76,17 +76,26 @@ class MainMenu(bgui.bge_utils.Layout):
         widget.update_image(img)
 
     def on_img_click(self, widget):
-        self.device.play(self.soundclick)
+        scn = bge.logic.getSceneList()
+        zoo = True
+        
+        if len(scn) > 1:
+            zoo = False
+        else:
+            self.device.play(self.soundclick)
+            zoo = True
+
         but = widget.name
-        if but == 'play':
-            print('Let\'s go play!')
+        if but == 'play' and zoo == True:
+            '''
             if ('current_profil' in bge.logic.globalDict):
                 print('Current profil: ', bge.logic.globalDict['current_profil'])
                 print('Profil datas: ', bge.logic.globalDict['user_profil'])
+            '''
             scene = bge.logic.addScene('zoo')
-        elif but == 'options':
+        elif but == 'options' and zoo == True:
             print('Let\'s go to the options screens!')
-        elif but == 'exit':
+        elif but == 'exit' and zoo == True:
             print('Leaving Shika... So long bro! :)')
             #blendfile = bpy.path.abspath("//") + 'main.blend'
             #bge.logic.startGame(blendfile)
