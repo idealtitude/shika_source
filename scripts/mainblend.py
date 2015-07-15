@@ -2,12 +2,11 @@ import sys
 import os
 import json
 
-import bpy
 import bge
 
 
-REAL_CWD = bpy.path.abspath("//")
-CONFIG_FILE = REAL_CWD + 'scripts' + os.sep + 'config.json'
+REAL_CWD = os.getcwd()
+CONFIG_FILE = REAL_CWD + os.sep + 'scripts' + os.sep + 'config.json'
 MAIN_MENU = REAL_CWD + os.sep + 'main_menu.blend'
 PROFIL_SELECT = REAL_CWD + os.sep + 'profil_select.blend'
 

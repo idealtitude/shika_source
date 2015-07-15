@@ -4,8 +4,6 @@ import json
 
 import aud
 
-import bpy
-
 # So we can find the bgui module
 sys.path.append('../..')
 
@@ -19,7 +17,8 @@ getusers = saveload.UsersMng() #Instanciation de la classe UsersMng
 bge.logic.globalDict['users'] = getusers.read_table(0) #On récupère toutes les entrées de la table users et on colle le tout dans le gloabldict `users` temporairement, jusqu'à ce que le joueur choisisse un profil ou en crée un nouveau
 
 #Fichier audio pour les click menu
-MENU_CLICK = bpy.path.abspath("//") + 'audio' + os.sep + 'menu_click.mp3'
+REAL_CWD = os.getcwd()
+MENU_CLICK = REAL_CWD + os.sep + 'audio' + os.sep + 'menu_click.mp3'
 
 
 class MenuMain(bgui.bge_utils.Layout):
@@ -79,12 +78,12 @@ class MenuMain(bgui.bge_utils.Layout):
         #updateuser = saveload.UsersMng()
         #update = updateuser.update_user(bge.logic.globalDict['user_profil']['iduser'], dicodatamaj)
 
-        blendfile = bpy.path.abspath("//") + os.sep + 'main_menu.blend'
+        blendfile = REAL_CWD + os.sep + 'main_menu.blend'
         bge.logic.startGame(blendfile)
 
     def onAdd(self, widget):
         self.device.play(self.soundclick)
-        blendfile = bpy.path.abspath("//") + os.sep + 'add_user.blend'
+        blendfile = REAL_CWD + os.sep + 'add_user.blend'
         bge.logic.startGame(blendfile)
 
     def onExit(self, widget):

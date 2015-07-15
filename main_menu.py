@@ -8,7 +8,6 @@ sys.path.append('../..')
 import bgui
 import bgui.bge_utils
 import bge
-import bpy
 
 from saveload import saveload #Import du module saveload
 
@@ -17,7 +16,8 @@ usracc = saveload.UsersDatas()
 bge.logic.globalDict['accessoires'] = usracc.get_user_datas(bge.logic.globalDict['user_profil']['iduser'], 'accessoires')
 bge.logic.globalDict['preferences'] = usracc.get_user_datas(bge.logic.globalDict['user_profil']['iduser'], 'preferences')
 
-MENUCLICK = bpy.path.abspath("//") + 'audio' + os.sep + 'menu_click.mp3'
+REAL_CWD = os.getcwd()
+MENUCLICK = REAL_CWD + os.sep + 'audio' + os.sep + 'menu_click.mp3'
 
 
 class MainMenu(bgui.bge_utils.Layout):

@@ -15,6 +15,7 @@ import bge
 
 from saveload import saveload #Import du module saveload
 
+REAL_CWD = os.getcwd()
 
 class SimpleLayout(bgui.bge_utils.Layout):
     """A layout showcasing various Bgui features"""
@@ -57,7 +58,7 @@ class SimpleLayout(bgui.bge_utils.Layout):
             
             bge.logic.globalDict['user_profil']['iduser'] = save
             
-            blendfile = bpy.path.abspath("//") + os.sep + 'main_menu.blend'
+            blendfile = REAL_CWD + os.sep + 'main_menu.blend'
             bge.logic.startGame(blendfile)
 
 
