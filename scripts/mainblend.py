@@ -32,7 +32,7 @@ class ShikaGame:
 
     def _routage(self):
         if self.datas['user_prefs']['load_profil_on_launch'] == 1:
-            bge.logic.globalDict['curent_profil'] = self.datas['user_prefs']['current_profil']] 
+            bge.logic.globalDict['curent_profil'] = self.datas['user_prefs']['current_profil'] 
             bge.logic.startGame(MAIN_MENU)
         else:
             bge.logic.startGame(PROFIL_SELECT)
@@ -40,4 +40,6 @@ class ShikaGame:
 
 def main():
     launch_game = ShikaGame()
+    
+main()
 
