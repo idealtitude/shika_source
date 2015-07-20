@@ -4,6 +4,7 @@ import json
 
 import bge
 
+os.chdir(bge.logic.expandPath('//'))
 
 REAL_CWD = os.getcwd()
 CONFIG_FILE = REAL_CWD + os.sep + 'scripts' + os.sep + 'config.json'
