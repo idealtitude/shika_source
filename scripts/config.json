@@ -2,5 +2,21 @@
 	"user_prefs": {
 		"load_profil_on_launch": 0,
 		"current_profil": "default"
+	},
+	"controls": {
+		"forward": ["UPARROWKEY", ""],
+		"backward": ["UPARROWKEY", ""],
+		"turn_right": ["RIGHTARROWKEY", ""],
+		"turn_left": ["LEFTARROWKEY", ""],
+		"arme_plus": ["PADPLUSKEY", ""],
+		"arme_minus": ["PADMINUS", ""],
+		"accessoire_1": ["ONEKEY", ""],
+		"accessoire_2": ["TWOKEY", ""],
+		"accessoire_3": ["THREEKEY", ""],
+		"accessoire_4": ["FOURKEY", ""],
+		"fire": ["LEFTCTRLKEY", ""],
+		"break": ["SPACEKEY", ""],
+		"reset": ["RKEY", ""],
+		"pause": ["ESCKEY", ""]
 	}
 }
