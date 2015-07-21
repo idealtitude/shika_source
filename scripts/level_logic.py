@@ -41,9 +41,12 @@ def init():
             'giveStart' : ('maskitoGiveStart', 50), # compte à rebours
             'getOut' :('maskitoGetOut', 60)         # départ du perso
             }
+
     else:
         print("Impossible de trouver l'objet 'maskito' dans la scène")
-
+        
+    
+    
 
         
     
