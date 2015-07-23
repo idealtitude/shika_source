@@ -5,7 +5,7 @@
 	},
 	"controls": {
 		"forward": ["UPARROWKEY", ""],
-		"backward": ["UPARROWKEY", ""],
+		"backward": ["DOWNARROWKEY", ""],
 		"turn_right": ["RIGHTARROWKEY", ""],
 		"turn_left": ["LEFTARROWKEY", ""],
 		"arme_plus": ["PADPLUSKEY", ""],
